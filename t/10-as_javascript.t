@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 5;
+use Test::More tests => 7;
 
 use_ok( 'XML::RSS::JavaScript' );
 my $rss = XML::RSS::JavaScript->new();
@@ -56,3 +56,5 @@ JAVASCRIPT_TEXT
 is( $rss->as_javascript, $expected, 'as_javascript' );
 is( $rss->as_javascript( 1 ), $expected_max, 'as_javascript( max )' );
 is( $rss->as_javascript( undef, 0 ), $expected_nodesc, 'as_javascript( undef, nodesc )' );
+is( $rss->as_javascript( 3 ), $expected, 'as_javascript( max too big )' );
+is( $rss->as_javascript( undef, 1 ), $expected, 'as_javascript( undef, desc )' );

@@ -1,8 +1,12 @@
 Revision history for Perl extension XML::RSS::JavaScript 
 
+0.4	Fri Oct 01, 2004
+	- restructured test files
+	- 100% test coverage
+
 0.3	Wed Oct 29, 2003 20:01:12
 	- added example of sucking in existing RSS feed and spitting out 
-	  JavaScript.J
+	  JavaScript.
 
 0.2	Fri Oct 03, 2003 08:56:32
 	- added CSS sample files to the MANIFEST

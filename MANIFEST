@@ -8,4 +8,8 @@ lib/XML/RSS/JavaScript.pm
 Makefile.PL
 MANIFEST
 README
-test.pl
+t/01-use.t
+t/10-as_javascript.t
+t/11.1-save_javascript-exception.t
+t/11.2-save_javascript.t
+META.yml                                 Module meta-data (added by MakeMaker)
