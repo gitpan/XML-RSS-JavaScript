@@ -1,4 +1,7 @@
 Revision history for Perl extension XML::RSS::JavaScript 
 
-0.1	Mon Sep 29, 2003 02:21:05 PM
+0.2	Fri Oct 03, 2003 08:56:32
+	- added CSS sample files to the MANIFEST
+
+0.1	Mon Sep 29, 2003 14:21:05 
 	- first version 
