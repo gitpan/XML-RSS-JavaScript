@@ -1,5 +1,8 @@
 Revision history for Perl extension XML::RSS::JavaScript 
 
+0.41	Wed Mar 02, 2005
+	- added pod and pod coverage tests
+
 0.4	Fri Oct 01, 2004
 	- restructured test files
 	- 100% test coverage

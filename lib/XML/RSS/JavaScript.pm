@@ -4,7 +4,7 @@ use strict;
 use Carp;
 use base 'XML::RSS';
 
-our $VERSION = 0.4;
+our $VERSION = 0.41;
 
 =head1 NAME
 
@@ -172,7 +172,7 @@ as JavaScript for easy consumption.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004 by Brian Cassidy and Ed Summers
+Copyright 2005 by Brian Cassidy and Ed Summers
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
