@@ -4,7 +4,7 @@ use strict;
 use Carp;
 use base 'XML::RSS';
 
-our $VERSION = 0.2;
+our $VERSION = 0.3;
 
 =head1 NAME
 
@@ -54,6 +54,16 @@ I<include> it like so:
 What's more the javascript emits HTML that can be fully styled with 
 CSS. See the CSS examples included with the distribution in the css directory.
 
+    <html>
+    <head>
+    <link rel="stylesheet" type="text/css" href="/css/rollover1.css">
+    </head>
+    <body>
+    Your content here...
+    <script language="JavaScript" src="http://my.feed.com//myfeed.js"></script>
+    </body>
+    </html>
+    
 =head1 METHODS
 
 =head2 save_javascript()
@@ -62,14 +72,13 @@ Pass in the path to a file you wish to write your javascript in. Optionally
 you can pass in the maximum amount of items to include from the feed and a
 boolean value to switch descriptions on or off (default: on). 
 
+    # save all the content 
     save_javascript( '/usr/local/apache/htdocs/rss/myfeed.js' );
 
-    or no more than 10 items:
-
+    # no more than 10 items:
     save_javascript( '/usr/local/apache/htdocs/rss/myfeed.js', 10 );
 
-    or no descriptions:
-
+    # save all items without descriptions:
     save_javascript( '/usr/local/apache/htdocs/rss/myfeed.js', undef, 0 );
 
 =cut
@@ -128,6 +137,20 @@ JAVASCRIPT_TEXT
 	return $output;
 
 }
+
+=head1 MORE EXAMPLES
+
+Perhaps you want to get an existing RSS feed, suck it in, and write it out
+as JavaScript for easy consumption. 
+
+    use XML::RSS::JavaScript;
+    use LWP::Simple;
+
+    my $xml = get( 'http://slashdot.org/slashdot.rss' );
+    my $rss = XML::RSS::JavaScript->new();
+    
+    $rss->parse( $xml );
+    print $rss->as_javascript();
 
 =head1 SEE ALSO
 
