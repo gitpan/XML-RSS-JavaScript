@@ -1,16 +1,8 @@
-use Test::More;
-
 use strict;
 use warnings;
+use Test::More tests => 4;
 
-BEGIN {
-	eval "use Test::Exception";
-	plan skip_all => "Test::Exception required" if $@;
-	plan tests => 4;
-
-	use_ok( 'XML::RSS::JavaScript' );
-}
-
+use_ok( 'XML::RSS::JavaScript' );
 my $rss = XML::RSS::JavaScript->new();
 isa_ok( $rss, 'XML::RSS::JavaScript' );
 
@@ -32,5 +24,10 @@ $rss->add_item(
     'description'   => 'desc2'
 );
 
-throws_ok { $rss->save_javascript; } qr/You must pass in a filename/, 'save_javascript (no file)';
-throws_ok { $rss->save_javascript( 't' ); } qr/Cannot open file/, "save_javascript (can't write file)";
+my $file = 't/out.js';
+
+$rss->save_json( $file );
+ok( -e $file, 'File created' );
+ok( -s $file, 'File written' );
+
+unlink( $file );

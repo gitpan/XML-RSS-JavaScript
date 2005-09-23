@@ -32,5 +32,5 @@ $rss->add_item(
     'description'   => 'desc2'
 );
 
-throws_ok { $rss->save_javascript; } qr/You must pass in a filename/, 'save_javascript (no file)';
-throws_ok { $rss->save_javascript( 't' ); } qr/Cannot open file/, "save_javascript (can't write file)";
+throws_ok { $rss->save_json; } qr/You must pass in a filename/, 'save_json (no file)';
+throws_ok { $rss->save_json( 't' ); } qr/Cannot open file/, "save_json (can't write file)";

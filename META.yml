@@ -1,11 +1,14 @@
-# http://module-build.sourceforge.net/META-spec.html
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         XML-RSS-JavaScript
-version:      0.41
-version_from: lib/XML/RSS/JavaScript.pm
-installdirs:  site
+---
+name: XML-RSS-JavaScript
+version: 0.5
+author:
+  - Brian Cassidy <bricas@cpan.org>
+abstract: serialize your RSS as JavaScript
+license: perl
 requires:
-    XML::RSS:                      0.9
-
-distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.17
+  XML::RSS: 0.9
+provides:
+  XML::RSS::JavaScript:
+    file: lib/XML/RSS/JavaScript.pm
+    version: 0.5
+generated_by: Module::Build version 0.2611

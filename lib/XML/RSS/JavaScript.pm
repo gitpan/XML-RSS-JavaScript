@@ -4,7 +4,7 @@ use strict;
 use Carp;
 use base 'XML::RSS';
 
-our $VERSION = 0.41;
+our $VERSION = 0.5;
 
 =head1 NAME
 
@@ -63,7 +63,23 @@ CSS. See the CSS examples included with the distribution in the css directory.
     <script language="JavaScript" src="http://my.feed.com//myfeed.js"></script>
     </body>
     </html>
-    
+
+=head1 INSTALLATION
+
+To install this module via Module::Build:
+
+	perl Build.PL
+	./Build         # or `perl Build`
+	./Build test    # or `perl Build test`
+	./Build install # or `perl Build install`
+
+To install this module via ExtUtils::MakeMaker:
+
+	perl Makefile.PL
+	make
+	make test
+	make install
+
 =head1 METHODS
 
 =head2 save_javascript()
@@ -85,12 +101,7 @@ boolean value to switch descriptions on or off (default: on).
 
 sub save_javascript {
 	my ( $self, $file, @options ) = @_;
-	if ( !$file ) { 
-	    croak "You must pass in a filename to save_javascript";
-	}
-	open( OUT, ">$file" ) || croak "Cannot open file $file for write: $!";
-	print OUT $self->as_javascript( @options );
-	close OUT;	
+	$self->_save( 'as_javascript', $file, @options );
 }
 
 =head2 as_javascript()
@@ -138,6 +149,50 @@ JAVASCRIPT_TEXT
 
 }
 
+=head2 save_json( )
+
+Pass in the path to a file you wish to write your javascript in. Optionally
+you can pass in any options that would normally get passed to C<as_json>.
+
+=cut
+
+sub save_json {
+	my ( $self, $file, @options ) = @_;
+	$self->_save( 'as_json', $file, @options );
+}
+
+=head2 as_json( )
+
+as_json will return a string containing json suitable for 
+generating text for your RSS object. You can pass in the maximum amount of
+items to include by passing in an integer as an argument. If you pass in no argument
+you will get the contents of the entire object. You can also pass in
+the name of the JSON object (default: RSSJSON).
+
+=cut
+
+sub as_json {
+	my ( $self, $max, $object_name ) = @_;
+	my $items = scalar @{ $self->{ items } };
+	$object_name = 'RSSJSON' unless defined $object_name;
+	if ( not $max or $max > $items ) { $max = $items; }
+
+	my $output = "if(typeof($object_name) == 'undefined') $object_name = {}; $object_name.posts = [";
+
+	my @entries;
+	foreach my $item ( ( @{ $self->{ items } } )[ 0..$max - 1 ] ) {
+		my $link  = $item->{ link };
+		my $title = _js_escape( $item->{ title } );
+
+		push @entries, qq({u:"$link",d:"$title"});
+	}
+
+	$output .= join( ',', @entries );
+	$output .= ']';
+
+	return $output;
+}
+
 =head1 MORE EXAMPLES
 
 Perhaps you want to get an existing RSS feed, suck it in, and write it out
@@ -179,12 +234,27 @@ it under the same terms as Perl itself.
 
 =cut
 
-sub _js_print { 
+sub _save {
+	my( $self, $method, $file, @options ) = @_;
+	if ( !$file ) { 
+	    croak "You must pass in a filename";
+	}
+	open( OUT, ">$file" ) || croak "Cannot open file $file for write: $!";
+	print OUT $self->$method( @options );
+	close OUT;	
+}
+
+sub _js_print {
+    my $string = _js_escape( shift );
+    return( "document.write('$string');\n" );
+}
+
+sub _js_escape {
     my $string = shift;
     $string =~ s/"/\\"/g;
     $string =~ s/'/\\'/g;
-    $string =~ s/\n//g;	
-    return( "document.write('$string');\n" );
+    $string =~ s/\n//g;
+    return $string;
 }
 
 1;
