@@ -5,21 +5,21 @@ SYNOPSIS
         use XML::RSS::JavaScript;
         my $rss = XML::RSS::JavaScript->new();
         $rss->channel(
-            title       => 'My Channel',
-            link        => 'http://my.url.com',
-            description => 'My RSS Feed.'
+        title        => 'My Channel',
+        link        => 'http://my.url.com',
+        description => 'My RSS Feed.'
         );
 
         $rss->add_item(
-            title       => 'My item #1',
-            link        => 'http://my.item.com#1',
-            description => 'My first news item.'
+        title        => 'My item #1',
+        link        => 'http://my.item.com#1',
+        description => 'My first news item.'
         );
 
         $rss->add_item( 
-            title       => 'My item #2',
-            link        => 'http://my.item.com#2',
-            description => 'My second news item.'
+        title        => 'My item #2',
+        link        => 'http://my.item.com#2',
+        description => 'My second news item.'
         );
 
         # save rss 
@@ -57,17 +57,17 @@ DESCRIPTION
 INSTALLATION
     To install this module via Module::Build:
 
-            perl Build.PL
-            ./Build         # or `perl Build`
-            ./Build test    # or `perl Build test`
-            ./Build install # or `perl Build install`
+        perl Build.PL
+        ./Build         # or `perl Build`
+        ./Build test    # or `perl Build test`
+        ./Build install # or `perl Build install`
 
     To install this module via ExtUtils::MakeMaker:
 
-            perl Makefile.PL
-            make
-            make test
-            make install
+        perl Makefile.PL
+        make
+        make test
+        make install
 
 METHODS
   save_javascript()
@@ -127,7 +127,7 @@ AUTHOR
     * Ed Summers <ehs@pobox.com>
 
 COPYRIGHT AND LICENSE
-    Copyright 2005 by Brian Cassidy and Ed Summers
+    Copyright 2007 by Brian Cassidy and Ed Summers
 
     This library is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.

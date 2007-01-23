@@ -2,12 +2,13 @@
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
+          'PL_FILES' => {},
+          'INSTALLDIRS' => 'site',
           'NAME' => 'XML::RSS::JavaScript',
+          'EXE_FILES' => [],
           'VERSION_FROM' => 'lib/XML/RSS/JavaScript.pm',
           'PREREQ_PM' => {
-                           'XML::RSS' => '0.9'
-                         },
-          'INSTALLDIRS' => 'site',
-          'PL_FILES' => {}
+                           'XML::RSS' => '1.20'
+                         }
         )
 ;

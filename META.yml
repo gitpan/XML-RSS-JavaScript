@@ -1,14 +1,19 @@
 ---
 name: XML-RSS-JavaScript
-version: 0.5
+version: 0.60
 author:
-  - Brian Cassidy <bricas@cpan.org>
+  - 'Brian Cassidy <bricas@cpan.org>'
 abstract: serialize your RSS as JavaScript
 license: perl
+resources:
+  license: http://dev.perl.org/licenses/
 requires:
-  XML::RSS: 0.9
+  XML::RSS: 1.20
 provides:
   XML::RSS::JavaScript:
     file: lib/XML/RSS/JavaScript.pm
-    version: 0.5
-generated_by: Module::Build version 0.2611
+    version: 0.60
+generated_by: Module::Build version 0.2805
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
