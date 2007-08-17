@@ -122,9 +122,10 @@ MORE EXAMPLES
 SEE ALSO
     * XML::RSS
 
-AUTHOR
-    * Brian Cassidy <bricas@cpan.org>
-    * Ed Summers <ehs@pobox.com>
+AUTHORS
+    Brian Cassidy <bricas@cpan.org>
+
+    Ed Summers <ehs@pobox.com>
 
 COPYRIGHT AND LICENSE
     Copyright 2007 by Brian Cassidy and Ed Summers
