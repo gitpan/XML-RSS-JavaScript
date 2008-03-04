@@ -1,8 +1,9 @@
 --- 
 abstract: serialize your RSS as JavaScript
-author: Brian Cassidy <bricas@cpan.org>
+author: 
+  - Brian Cassidy <bricas@cpan.org>
 distribution_type: module
-generated_by: Module::Install version 0.67
+generated_by: Module::Install version 0.68
 license: perl
 meta-spec: 
   url: http://module-build.sourceforge.net/META-spec-v1.3.html
@@ -16,4 +17,4 @@ no_index:
 requires: 
   Test::More: 0
   XML::RSS: 1.31
-version: 0.61
+version: 0.62
